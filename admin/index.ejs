@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>관리자 모드</title>
+<style>
+*{margin:0px;padding:0px;}
+header{
+	width:100%;
+	background:yellow;
+	overflow:hidden;
+}
+header h2{
+	float:left;
+}
+header span{
+	float:right;
+}
+nav a{
+	display:block;
+	background:#000;
+	color:#fff;
+	float:left;
+	width:20%;
+	padding:15px 0px;/* 2개만 적으면 앞:top,bottom 뒤 left,right*/
+	text-align:center;
+	text-decoration:none; /*밑줄 없애기*/
+}
+nav a:hover{
+	background:red;
+}
+</style>
+
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<header>
+		<h2>CoCat</h2>
+		<span><%=id%>  로그아웃</span>
+	</header>
+	<nav>
+		<a href="#">강좌관리</a>
+		<a href="#">강사관리</a>
+		<a href="#">회원관리</a>
+		<a href="#">게시판관리</a>
+		<a href="#">카테고리관리</a>
+	</nav>
+	<aside></aside>
+	<section></section>
+	<footer></footer>
+</div>
+</body>
+</html>

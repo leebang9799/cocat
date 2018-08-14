@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<style>
+.wrapper{
+	width:400px;
+	background:yellow;
+	border:2px solid red;
+	margin:auto;
+	text-align:center;
+	border-radius:10px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-150%);
+}
+
+.wrapper input{
+	width:96%;
+	font-size:20px;
+	margin:5px;
+}
+
+.bt-wrapper{
+	padding:20px 0px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+var id,pw;
+var btLogin, btRegist;
+
+addEventListener("load", function(){
+	id=document.getElementById("id");	
+	pw = document.getElementById("pw");
+	btLogin=document.getElementById("btLogin");
+	btRegist=document.getElementById("btRegist");
+
+	btLogin.addEventListener("click", function(){
+		login();
+	});
+
+	btRegist.addEventListener("click",function(){
+		regist();
+	});
+});
+
+function login(){
+	if(id.value==""){
+		alert("아이디를 입력하세요");
+		id.focus();
+	}else if(pw.value==""){
+		alert("비밀번호를 입력하세요");
+		pw.focus();
+	}else{
+		form1.action="/admin/login";
+		form1.submit();
+	}
+}
+
+function regist(){
+
+}
+</script>
+</head>
+<body>
+	<div class="wrapper">
+		<form name="form1" method="post">
+			<h2>로그인</h2>
+
+			<div>
+				<input type="text" placeholder="id 입력" name="id" id="id">
+			</div>
+
+			<div>
+				<input type="password" placeholder="비밀번호 입력" name="pw" id="pw">
+			</div>
+
+			<div class="bt-wrapper">
+				<button type="button" id="btLogin">로그인</button>
+				<button type="button" id="btRegist">가입</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
