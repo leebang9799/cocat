@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+.wrapper{
+	width:450px;
+	border:3px solid red;
+	margin:auto;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+//jquery : 자바스크립트를 짧게 사용할수있도록 
+//라이브러리화 시킴 (미국사람)
+//jquery의 문법형식은 아래를 벗어나지 않는다 
+//(누구를).(어떻게할지)
+//특히 누구를 자리에 오는 문법은 css 의 선택자를 그대로 차용
+//addEventListener("load",function);
+/*
+$(document).ready(function(){
+	alert("hi");
+});
+*/
+$(function(){
+	$("#bt").click(function(){
+		//alert("나 눌렀어?");
+		$("form").attr("action","/upload");//form1.action="";
+		$("form").submit(); //form1.submit();
+	
+	});
+});
+//
+</script>
+</head>
+<body>
+	<div class="wrapper">
+		<form name="form1" method="post" enctype="multipart/form-data">
+			<div>
+				<input type="text" name="msg">
+			</div>
+			<div>
+				<input type="file" name="myFile">
+			</div>
+		</form>
+		<div>
+			<button id="bt">업로드</button>
+		</div>
+	</div>
+
+</body>
+</html>

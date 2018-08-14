@@ -6,6 +6,7 @@ var bodyParser=require("body-parser");//외부
 var mysql=require("mysql");//외부
 var session=require("express-session");//외부
 var conStr=require("./my_modules/conStr.js");
+var multiparty=require("multiparty"); //외부
 
 var app=express();
 var server=http.createServer(app); 
@@ -72,6 +73,27 @@ app.get("/admin", function(request, response){
 		}));
 	});
 });
+
+//업로드 요청 처리 
+app.post("/upload", function(request , response){
+	//기본 설정
+	var form=new multiparty.Form({
+		autoFiles:true,
+		uploadDir:__dirname+"/data",  /*파일이 저장될 서버 측 경로*/
+		maxFilesSize:1024*1024*50
+	});
+	
+	//실제 업로드 처리 , fields : 파일이 아닌 입력 파라미터
+	form.parse(request, function(error, fields, files){
+		if(error){
+			console.log(error);
+		}
+		console.log("텍스트 필드값 ", fields);
+		console.log("파일 정보 ", files);
+	});
+
+});
+
 
 
 server.listen(9999, function(){
