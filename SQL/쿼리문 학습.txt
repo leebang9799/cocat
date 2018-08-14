@@ -7,6 +7,26 @@ from emp
 where comm is not null;
 
 3.30번 부서에서 근무하는 사원들의 이름, 부서번호를 출력 
+select ename, deptno
+from emp 
+where deptno=30;
+
+4.30번 부서에서 근무하는 사원들의 이름, 부서번호,부서명을 출력
+정규화에 의해 물리적으로 분리된 테이블을 마치 하나처럼 보여줄
+수 있는 select 문을 조인문(join) 이라 한다
+
+select ename, dept.deptno, dname from emp , dept;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
