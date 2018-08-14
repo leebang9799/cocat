@@ -6,7 +6,10 @@ var bodyParser=require("body-parser");//외부
 var mysql=require("mysql");//외부
 var session=require("express-session");//외부
 var conStr=require("./my_modules/conStr.js");
+var StringObj=require("./my_modules/StringObj.js");
 var multiparty=require("multiparty"); //외부
+
+var strObj=new StringObj(); //문자열 처리 객체 생성
 
 var app=express();
 var server=http.createServer(app); 
@@ -87,9 +90,34 @@ app.post("/upload", function(request , response){
 	form.parse(request, function(error, fields, files){
 		if(error){
 			console.log(error);
+		}else{
+			console.log("텍스트 필드값 ",fields);
+			console.log("파일 정보 ", files);
+			
+			//이미 접속되어진 접속객체를 잠시 대여!!
+			pool.getConnection(function(err, con){
+				if(err){
+					console.log(err);
+				}else{
+					var msg=fields.msg[0]; //넘어온 필드값
+					var path=files.myFile[0].path;//넘어온 파일명
+					var filename=strObj.getFilename(path);
+
+					var sql="insert into gallery(msg,filename)";
+					sql+=" values(?,?)";
+
+					con.query(sql,[msg, filename], function(err2, result){
+						if(err2){
+							console.log(err2);
+						}else{
+							console.log(result);
+						}
+					});
+				}
+			});
+
+
 		}
-		console.log("텍스트 필드값 ", fields);
-		console.log("파일 정보 ", files);
 	});
 
 });
