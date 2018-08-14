@@ -115,8 +115,6 @@ app.post("/upload", function(request , response){
 					});
 				}
 			});
-
-
 		}
 	});
 
